@@ -1,5 +1,3 @@
-
-=======
 ### Challenge
 
 While enumerating the different pages of the site, I saw an available page named redirect, used here to redirect users to the site's social media pages.
