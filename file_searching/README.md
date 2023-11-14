@@ -41,3 +41,32 @@ list_files_in_directory(url)
 ### Vulnerability
 
 The /.hidden folder is often used to hide files in the file system but does not provide real security. There is a risk of unauthorized access and security vulnerabilities.
+
+This folder was mentionned in the robots.txt. The file robots.txt is used to give instructions to web robots, such as search engine crawlers, about locations within the web site that robots are allowed, or not allowed, to crawl and index.
+
+The presence of the robots.txt does not in itself present any kind of security vulnerability. However, it is often used to identify restricted or private areas of a site's contents.
+
+### How to prevent this vulnerability
+
+- Do not rely on robots.txt to provide any kind of protection over unauthorized access
+- Not assume that all web robots will honor the file's instructions
+- Use the file .htaccess instead, an example to deny the access of a .hidden folder :
+    ```
+    <Directory ~ “\.hidden”>
+    Order allow,deny
+    Deny from all
+    </Directory>
+    ```
+  Or for a file:
+  ```
+  <Files ~ “^\.htaccess”>
+  Order allow,deny
+  Deny from all
+  </Files>
+  ```
+
+### Resources
+
+- https://portswigger.net/kb/issues/00600600_robots-txt-file
+- https://htaccessbook.com/protect-htaccess-files/
+- https://filemanagerpro.io/article/how-to-deny-access-to-files-folders-through-htaccess-file/
