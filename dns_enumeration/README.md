@@ -84,10 +84,26 @@ The flag is: d19b4823e0d5600ceed56d5e896ef328d7a2b9e7ac7e80f4fcdb9b10bcb3e7ff
 
 ### Vulnerability
 
+This folder was mentionned in the robots.txt. The file robots.txt is used to give instructions to web robots, such as search engine crawlers, about locations within the web site that robots are allowed, or not allowed, to crawl and index.
+
+The presence of the robots.txt does not in itself present any kind of security vulnerability. However, it is often used to identify restricted or private areas of a site's contents.
+Here, the htpasswd file is directly accessible by the web server, which is a vulnerability. This file is used to store the credentials needed to administer the web server.
 
 ### How to prevent from this vulnerability
 
+Like the file_searching challenge: 
+- Do not rely on robots.txt to provide any kind of protection over unauthorized access
+- Not assume that all web robots will honor the file's instructions
+- Use the file htaccess to protect the htpasswd :
+	```
+ 	AuthType Basic
+	AuthName "restricted area"
+	AuthUserFile /path/to/the/directory/you/are/protecting/.htpasswd
+	require valid-user
+ 	```
+
 ### Resources
+- https://stackoverflow.com/questions/5229656/password-protecting-a-directory-and-all-of-its-subfolders-using-htaccess
 - https://portswigger.net/kb/issues/00600600_robots-txt-file
 - https://htaccessbook.com/protect-htaccess-files/
 - https://filemanagerpro.io/article/how-to-deny-access-to-files-folders-through-htaccess-file/
