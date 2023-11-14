@@ -27,6 +27,10 @@ For example, a clone of the vulnerable site could be used to gather sensitive da
 > Source : [Guardia school](https://guardia.school/boite-a-outils/focus-sur-la-vulnerabilite-de-open-redirect.html)
 
 ### How to prevent open redirect 
+- Just don't use redirect ? 🙂
+- Don't allow the URL as user input for the destination
+- Create a whitelist of trusted URLs
+- Force all redirects to first through a page notifying users that they are going off of your site
 
 ### Ressources
 
