@@ -1,3 +1,6 @@
+=======
+### Challenge
+
 Here's the translation of your text into English:
 
 "I have a /.hidden file with a lot of folders and subfolders, where files with sensitive data may be located. I ran a script that checks each folder and subfolder until it finds files with sensitive data.
@@ -36,4 +39,7 @@ def list_files_in_directory(url, current_path=''):
 url = 'http://192.168.56.101/.hidden/'
 list_files_in_directory(url)
 ```
+=======
+### Vulnerability
+
 The /.hidden folder is often used to hide files in the file system but does not provide real security. There is a risk of unauthorized access and security vulnerabilities."
