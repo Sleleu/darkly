@@ -1,14 +1,12 @@
-=======
 ### Challenge
 
-Here's the translation of your text into English:
+In the robots.txt file, we once again find a tree of links with a depth level of at least 3. It would be too time-consuming to visit all of them because, considering there are 25 files, then 25 more, and another 25 before reaching the README, we have 15625 files to examine.
 
-"I have a /.hidden file with a lot of folders and subfolders, where files with sensitive data may be located. I ran a script that checks each folder and subfolder until it finds files with sensitive data.
-
-I started with checking the file size, but it didn't work because it was a string.
+With this script that recursively traverses the entire tree structure, we can discover a leaf README that may not have the same content as the 34 characters we find:
 
 ```python
-Copy code
+#!/bin/python3
+
 from bs4 import BeautifulSoup
 import requests
 from urllib.parse import urljoin
@@ -34,12 +32,12 @@ def list_files_in_directory(url, current_path=''):
             file_size = file_info[-1]
             file_url = urljoin(current_path, file_name)
             if file_size != "34":
-                print(f"Flag found: {file_url}")
-            #     print(file_url)
-url = 'http://192.168.56.101/.hidden/'
+                print(f"File found: {file_url}")
+
+url = 'http://192.168.56.107/.hidden/'
 list_files_in_directory(url)
 ```
 =======
 ### Vulnerability
 
-The /.hidden folder is often used to hide files in the file system but does not provide real security. There is a risk of unauthorized access and security vulnerabilities."
+The /.hidden folder is often used to hide files in the file system but does not provide real security. There is a risk of unauthorized access and security vulnerabilities.
